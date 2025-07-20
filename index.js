@@ -22,6 +22,7 @@ const corsOptions = {
   origin: [
     "http://localhost:5173", 
     "https://assignment-12-cf373.web.app", 
+    "https://assignment-12-cf373.firebaseapp.com"
     
   ],
   credentials: true,
