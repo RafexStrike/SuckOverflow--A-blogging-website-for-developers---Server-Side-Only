@@ -21,7 +21,7 @@ const stripe = process.env.STRIPE_SECRET_KEY
 const corsOptions = {
   origin: [
     "http://localhost:5173", 
-    "https://assignment-12-cf373.web.app/", 
+    "https://assignment-12-cf373.web.app", 
     
   ],
   credentials: true,
@@ -1413,111 +1413,7 @@ app.delete("/posts/:id", verifyFirebaseToken, async (req, res) => {
     });
     // for admin - 4 (adding and managing tasks) ends.........................
 
-    // 8. DELETE /posts/:id - Delete a post (optional: add user verification)
-    // app.delete("/posts/:id", async (req, res) => {
-    //   try {
-    //     const postId = req.params.id;
-
-    //     if (!postId) {
-    //       return res.status(400).send({
-    //         message: "Post ID is required"
-    //       });
-    //     }
-
-    //     const result = await postCollection.deleteOne({
-    //       _id: new ObjectId(postId)
-    //     });
-
-    //     if (result.deletedCount === 0) {
-    //       return res.status(404).send({
-    //         message: "Post not found"
-    //       });
-    //     }
-
-    //     // Also delete associated comments
-    //     await commentCollection.deleteMany({
-    //       postId: new ObjectId(postId)
-    //     });
-
-    //     res.send({
-    //       message: "Post deleted successfully",
-    //       deletedCount: result.deletedCount
-    //     });
-    //   } catch (error) {
-    //     console.error("Delete post error:", error);
-    //     res.status(500).send({ error: "Failed to delete post" });
-    //   }
-    // });
-    // 6.  for saving the user's or member's post
-    // app.post("/posts", verifyFirebaseToken, async (req, res) => {
-    //   const doc = {
-    //     ...req.body,
-    //     upVote: 0,
-    //     downVote: 0,
-    //     reports: [],
-    //     postTime: new Date(),
-    //   };
-    //   const result = await postCollection.insertOne(doc);
-    //   res.send(result);
-    // });
-    // 7. GET /posts/count?email=user@example.com  -> number of posts by that user
-    // app.get(
-    //   "/posts/count",
-    //   verifyFirebaseToken,
-    //   verifyTokenEmail,
-    //   async (req, res) => {
-    //     try {
-    //       // email may arrive URL‑encoded, e.g. rafi%40rafi.com
-    //       const raw = req.query.email || "";
-    //       const email = decodeURIComponent(raw);
-
-    //       if (!email) {
-    //         return res.status(400).send({ error: "email query required" });
-    //       }
-
-    //       const count = await postCollection.countDocuments({
-    //         authorEmail: email,
-    //       });
-    //       res.send({ count });
-    //     } catch (err) {
-    //       console.error("count error", err);
-    //       res.status(500).send({ error: "count failed" });
-    //     }
-    //   }
-    // );
-
-    /* 8   A. get posts by author (for /dashboard/user-posts) */
-    // app.get("/posts/by-author", async (req, res) => {
-    //   try {
-    //     const email = decodeURIComponent(req.query.email || "");
-    //     if (!email) return res.status(400).send({ error: "email required" });
-
-    //     const docs = await postCollection
-    //       .find({ authorEmail: email })
-    //       .sort({ postTime: -1 })
-    //       .toArray();
-    //     res.send(docs);
-    //   } catch (err) {
-    //     console.error("by-author error", err);
-    //     res.status(500).send({ error: "fetch failed" });
-    //   }
-    // });
-
-    /* 9  B. delete a post (optional) */
-    // app.delete("/posts/:id", async (req, res) => {
-    //   try {
-    //     const id = req.params.id;
-    //     const result = await postCollection.deleteOne({
-    //       _id: new ObjectId(id),
-    //     });
-    //     res.send(result);
-    //   } catch (err) {
-    //     console.error("delete post error", err);
-    //     res.status(500).send({ error: "delete failed" });
-    //   }
-    // });
-
-    /* C. (already shown earlier) GET /posts/count — unchanged */
+   
 
     // Connect the client to the server	(optional starting in v4.7)
     // await client.connect();
